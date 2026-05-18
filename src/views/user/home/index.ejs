@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Blog</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        rel="stylesheet"
+        href="/bootstrap/css/bootstrap.min.css"
+    >
+
+    <!-- Custom CSS -->
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
+    >
+</head>
+
+<body class="bg-light">
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+        <div class="container">
+
+            <a class="navbar-brand fw-bold" href="#">
+                MyBlog
+            </a>
+
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#menu"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="menu">
+
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">
+                            Home
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Blog
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            About
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero-section text-white d-flex align-items-center">
+
+        <div class="container text-center">
+
+            <h1 class="display-3 fw-bold">
+                Welcome To My Blog
+            </h1>
+
+            <p class="lead mt-3">
+                Learn NodeJS, Web Development & Modern Backend
+            </p>
+
+            <button class="btn btn-warning btn-lg mt-3">
+                Explore Articles
+            </button>
+
+        </div>
+
+    </section>
+
+    <!-- Blog Posts -->
+    <section class="py-5">
+
+        <div class="container">
+
+            <div class="row g-4">
+
+                <% posts.forEach(post => { %>
+
+                    <div class="col-md-4">
+
+                        <div class="card border-0 shadow h-100">
+
+                            <img
+                                src="<%= post.image %>"
+                                class="card-img-top"
+                                alt=""
+                            >
+
+                            <div class="card-body">
+
+                                <h4 class="card-title">
+                                    <%= post.title %>
+                                </h4>
+
+                                <p class="card-text text-muted">
+                                    <%= post.desc %>
+                                </p>
+
+                                <a href="#" class="btn btn-dark">
+                                    Read More
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                <% }) %>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+
+        <div class="container text-center">
+
+            <p class="mb-0">
+                © 2026 MyBlog - NodeJS Blog Website
+            </p>
+
+        </div>
+
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
