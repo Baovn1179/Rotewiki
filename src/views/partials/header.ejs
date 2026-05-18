@@ -12,79 +12,87 @@
 
     <title>Rotewiki</title>
 
+    <!-- Bootstrap -->
     <link
         rel="stylesheet"
         href="/bootstrap/css/bootstrap.min.css"
     >
 
+    <!-- Bootstrap Icons -->
     <link
         rel="stylesheet"
-        href="public/css/style.css"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    >
+
+    <!-- Custom CSS -->
+    <link
+        rel="stylesheet"
+        href="/css/style.css"
     >
 
 </head>
 
 <body>
 
-<div class="main-layout">
+<div class="app-layout">
 
-    <!-- Sidebar -->
+    <!-- SIDEBAR -->
     <aside class="sidebar">
 
         <!-- Logo -->
-        <div class="logo-box">
+        <div class="sidebar-logo">
 
             <img
                 src="/images/logo.png"
                 alt="logo"
-                class="logo-img"
             >
-
-            <span class="logo-text">
-                Rotewiki
-            </span>
 
         </div>
 
-        <!-- Menu -->
-        <ul class="menu-list">
+        <!-- Divider -->
+        <div class="sidebar-divider"></div>
 
-            <li>
-                <a href="/">
-                    <i class="bi bi-house"></i>
+        <!-- Top menu -->
+        <div class="sidebar-top">
 
-                    <span>Trang chủ</span>
-                </a>
-            </li>
+            <!-- Search -->
+            <button class="sidebar-btn">
 
-            <li>
-                <a href="/login">
-                    <i class="bi bi-person"></i>
+                <i class="bi bi-search"></i>
 
-                    <span>Đăng nhập</span>
-                </a>
-            </li>
+            </button>
 
-            <li>
-                <a href="#">
-                    <i class="bi bi-person-plus"></i>
+            <!-- Expand Menu -->
+            <button
+                class="sidebar-btn"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#megaMenu"
+            >
 
-                    <span>Đăng ký</span>
-                </a>
-            </li>
+                <i class="bi bi-list"></i>
 
-        </ul>
+            </button>
 
-        <!-- Notification -->
-        <div class="sidebar-notify">
+        </div>
 
-            <p>
-                🔔 Chào mừng đến với Rotewiki
-            </p>
+        <!-- Bottom -->
+        <div class="sidebar-bottom">
+
+            <button class="sidebar-btn">
+
+                <i class="bi bi-gear"></i>
+
+            </button>
+
+            <button class="sidebar-btn">
+
+                <i class="bi bi-person-circle"></i>
+
+            </button>
 
         </div>
 
     </aside>
 
-    <!-- Main content -->
-    <main class="content-area">
+    <!-- MAIN CONTENT -->
+    <main class="main-content">
