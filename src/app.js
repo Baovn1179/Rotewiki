@@ -12,10 +12,11 @@ exapp.use(
     express.static(
         path.join(
             __dirname,
-            'node_modules/bootstrap/dist'
-        )
-    )
+            '../node_modules/bootstrap/dist'
+        
+    ))
 );
+
 
 exapp.use("/", loader.route.home);
 
