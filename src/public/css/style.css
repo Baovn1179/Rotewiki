@@ -1,0 +1,159 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #f5f5f5;
+}
+
+/* Layout */
+.main-layout {
+    flex: 1;
+    display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 80px;
+    background: #000;
+    color: white;
+
+    transition: 0.3s;
+
+    overflow: hidden;
+
+    min-height: 100vh;
+
+    position: sticky;
+    top: 0;
+}
+
+.sidebar:hover {
+    width: 260px;
+}
+
+/* Logo */
+.logo-box {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 20px;
+    border-bottom: 1px solid #333;
+}
+
+.logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+}
+
+.logo-text {
+    font-size: 22px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+/* Menu */
+.menu-list {
+    list-style: none;
+    padding: 0;
+}
+
+.menu-list li a {
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    color: white;
+    text-decoration: none;
+
+    padding: 18px 20px;
+
+    transition: 0.3s;
+
+    white-space: nowrap;
+}
+
+.menu-list li a:hover {
+    background: #222;
+}
+
+/* Notify */
+.sidebar-notify {
+    padding: 20px;
+    margin-top: 30px;
+
+    color: #ccc;
+    font-size: 14px;
+}
+
+/* Content */
+.content-area {
+    flex: 1;
+    padding: 20px;
+}
+
+/* Footer */
+.footer {
+    background: red;
+    color: white;
+
+    text-align: center;
+
+    padding: 15px;
+
+    margin-top: auto;
+}
+
+/* Card */
+.custom-card {
+    border: none;
+    transition: 0.3s;
+}
+
+.custom-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Login */
+.login-wrapper {
+    min-height: 80vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-card {
+    width: 100%;
+    max-width: 420px;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 10px;
+
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+
+    .sidebar {
+        width: 70px;
+    }
+
+    .sidebar:hover {
+        width: 220px;
+    }
+
+}
