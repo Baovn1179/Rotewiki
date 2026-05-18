@@ -1,7 +1,8 @@
 const router = require("express").Router();
+const loader = require("../config/loader.config");
 
 router.get("/", (req, res) => {
-    res.send("Hello world");
+    res.render(loader.view.user.home);
 });
 
 
