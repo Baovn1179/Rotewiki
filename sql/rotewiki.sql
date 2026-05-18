@@ -9,3 +9,10 @@ CREATE TABLE UserAccount (
     DriveFolder VARCHAR(255),
     IsActive BOOLEAN
 );
+
+
+CREATE TABLE Post (
+    ID INT PRIMARY KEY,
+    Username VARCHAR(30)
+);
+
