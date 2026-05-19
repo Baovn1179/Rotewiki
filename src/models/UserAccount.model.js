@@ -5,15 +5,19 @@ const crypto = require("crypto");
 
 const UserAccount = {
     CheckUser: async username => {
-      var user = await db.Select({
-        table: "useraccount",
-        select: "*"
-      })
-      
-      console.log(user);
+        var user = await db.Select({
+            table: "useraccount",
+            select: "*",
+            condition: {
+                column: "username",
+                value: username
+            }
+        })
+
+        console.log(user);
     },
     Create: async data => {
-        await db.Insert({
+        let response = await db.Insert({
             table: "useraccount",
             data: [
                 {
@@ -26,15 +30,10 @@ const UserAccount = {
                 }
             ]
         });
+
+        console.log(response);
+
+        return response;
     }
 }
 
-if (!UserAccount.CheckUser("baovn1179")) {
-    UserAccount.Create({
-        username: "A",
-        fullname: "Nguyen Van A",
-        role: "user",
-        password: null,
-        drivefolder: null
-    })
-}

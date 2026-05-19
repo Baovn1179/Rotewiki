@@ -23,8 +23,8 @@ const db = {
     Select: async query => {
         const {data, error} = await client 
             .from(query.table)
-            .select(query.select);
-
+            .select(query.select)
+            .eq(query.condition.column, query.condition.value)
 
         return data || error;
     }
