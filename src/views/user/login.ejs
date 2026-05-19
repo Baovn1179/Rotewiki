@@ -1,15 +1,74 @@
-<%- include('../partials/header') %>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    àdaf
-</body>
-</html>
+<%- include("../partials/header") %>
 
-<%- include('../partials/footer') %>
+<div class="register-page">
+
+    <!-- TOP HEADER -->
+    <div
+        class="register-top"
+        onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    >
+
+        <h1>
+            Yêu cầu đăng nhập
+        </h1>
+
+        <div class="register-top-divider"></div>
+
+    </div>
+
+    <!-- MAIN BOX -->
+    <div class="register-container">
+
+        <!-- Intro -->
+        <div class="register-intro">
+
+            <h2>
+                Chào mừng đồng chí quay trở lại!
+            </h2>
+
+            <h4>
+                Đây là trang wiki, cơ quan chính luận của CLB Rotesovie.
+                Hãy cộng tác với chúng tôi, vì một tương lai tươi đẹp của chủ nghĩa cộng sản!
+            </h4>
+
+        </div>
+
+        <!-- GROUP 1 -->
+        <div class="register-group">
+
+            <div class="group-title">
+                Thông tin tài khoản
+            </div>
+
+            <div class="form-group-custom">
+
+                <label>Username</label>
+                <input type="text">
+
+            </div>
+
+
+            <div class="form-group-custom">
+
+                <label>Password</label>
+                <input type="password">
+
+            </div>
+
+
+        </div>
+
+
+        <!-- BUTTON -->
+        <div class="submit-wrapper">
+
+            <a href="/service/register" class="btn btn-primary">Gửi yêu cầu</a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<%- include("../partials/footer") %>
