@@ -31,6 +31,16 @@ const UserAccount = {
             ]
         });
 
+        await db.Insert({
+            table: "userlistregister",
+            data: [
+                {
+                    username: data.username,
+                    questionrecord: data.questionrecord
+                }
+            ]
+        });
+
         return response;
     }
 }
