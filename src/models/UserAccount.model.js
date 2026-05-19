@@ -14,7 +14,7 @@ const UserAccount = {
             }
         })
 
-        console.log(user);
+        return !!user;
     },
     Create: async data => {
         let response = await db.Insert({
@@ -30,8 +30,6 @@ const UserAccount = {
                 }
             ]
         });
-
-        console.log(response);
 
         return response;
     }

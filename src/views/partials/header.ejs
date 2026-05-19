@@ -5,94 +5,99 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Rotewiki</title>
 
     <!-- Bootstrap -->
-    <link
-        rel="stylesheet"
-        href="/bootstrap/css/bootstrap.min.css"
-    >
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 
     <!-- Bootstrap Icons -->
-    <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
-    >
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Custom CSS -->
-    <link
-        rel="stylesheet"
-        href="public/css/style.css"
-    >
+    <link rel="stylesheet" href="public/css/style.css">
 
 </head>
 
 <body>
 
-<div class="app-layout">
+    <div class="app-layout">
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
 
-        <!-- Logo -->
-        <div class="sidebar-logo">
+            <!-- Logo -->
+            <div class="sidebar-logo">
 
-            <img
-                src="public/images/logo.png"
-                alt="logo"
-            >
+                <img src="public/images/logo.png" alt="logo">
 
-        </div>
+            </div>
 
-        <!-- Divider -->
-        <div class="sidebar-divider"></div>
+            <!-- Divider -->
+            <div class="sidebar-divider"></div>
 
-        <!-- Top menu -->
-        <div class="sidebar-top">
+            <!-- Top menu -->
+            <div class="sidebar-top">
 
-            <!-- Search -->
-            <button class="sidebar-btn">
+                <!-- Search -->
+                <button class="sidebar-btn">
 
-                <i class="bi bi-search"></i>
+                    <i class="bi bi-search"></i>
 
-            </button>
+                </button>
 
-            <!-- Expand Menu -->
-            <button
-                class="sidebar-btn"
-                data-bs-toggle="offcanvas"
-                data-bs-target="#megaMenu"
-            >
+                <!-- Expand Menu -->
+                <button class="sidebar-btn" data-bs-toggle="offcanvas" data-bs-target="#megaMenu">
 
-                <i class="bi bi-list"></i>
+                    <i class="bi bi-list"></i>
 
-            </button>
+                </button>
 
-        </div>
+            </div>
 
-        <!-- Bottom -->
-        <div class="sidebar-bottom">
+            <!-- Bottom -->
+            <div class="sidebar-bottom">
 
-            <button class="sidebar-btn">
+                <button class="sidebar-btn">
 
-                <i class="bi bi-gear"></i>
+                    <i class="bi bi-gear"></i>
 
-            </button>
+                </button>
 
-            <button class="sidebar-btn">
+                <div class="user-wrapper">
 
-                <i class="bi bi-person-circle"></i>
+                    <button class="sidebar-btn">
 
-            </button>
+                        <i class="bi bi-person-circle"></i>
 
-        </div>
+                    </button>
 
-    </aside>
+                    <div class="user-popup">
 
-    <!-- MAIN CONTENT -->
-    <main class="main-content">
+                        <h3>Người dùng</h3>
+
+                        <div class="user-popup-divider"></div>
+
+                        <p>
+                            Đồng chí cần đăng nhập để cộng tác với chúng tôi
+                        </p>
+
+                        <button class="login-btn">
+                            <a href="/login" class="text-white">Đăng nhập</a>
+                        </button>
+
+                        <button class="register-btn">
+                            <a href="/register" class="text-dark">Đăng ký</a>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">

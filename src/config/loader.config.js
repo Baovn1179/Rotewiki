@@ -8,7 +8,9 @@ const loader = {
     },
     view: {
         user: {
-            home: "../views/user/home/index.ejs"
+            home: "../views/user/home/index.ejs",
+            login: "../views/user/home/login.ejs",
+            register: "../views/user/home/register.ejs"
         }
     }
 }

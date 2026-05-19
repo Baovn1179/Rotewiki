@@ -18,14 +18,9 @@ exapp.use(
 );
 
 exapp.use("/public", express.static(path.join(__dirname, "public")));
-
-
 exapp.use("/", loader.route.home);
 
 exapp.listen(3000);
-
-
-
 
 
 module.exports = exapp;

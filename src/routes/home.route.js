@@ -19,9 +19,18 @@ router.get("/", (req, res) => {
         }
     ];
 
-    res.render('user/home', {
+    res.render('user/', {
         posts
     });
+});
+
+
+router.get("/login", (req, res) => {
+    res.render("user/login");
+});
+
+router.get("/register", (req, res) => {
+    res.render("user/register");
 });
 
 
