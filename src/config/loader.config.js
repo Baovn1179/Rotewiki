@@ -1,9 +1,7 @@
 const loader = {
     route: {
         home: require("../routes/home.route"),
-        service: {
-            useraccount: require("../routes/service/useraccount.service.route")
-        }
+        useraccount: require("../routes/UserAccount.route")
     },
     googleApi: ("./api/google.json"),
     drive: {
@@ -11,9 +9,9 @@ const loader = {
     },
     view: {
         user: {
-            home: "../views/user/home/index.ejs",
-            login: "../views/user/home/login.ejs",
-            register: "../views/user/home/register.ejs"
+            home: "../views/user/index.ejs",
+            login: "../views/user/login.ejs",
+            register: "../views/user/register.ejs"
         }
     }
 }
