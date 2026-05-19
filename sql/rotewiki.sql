@@ -12,16 +12,21 @@ CREATE TABLE UserAccount (
     Role VARCHAR(10),
     Password VARBINARY(MAX),
     DriveFolder VARCHAR(255),
-    IsActive BOOLEAN
+    IsActive BIT
 );
 
+CREATE TABLE UserListRegister (
+    ID IDENTITY(1,1) PRIMARY KEY,
+    Username VARCHAR(30),
+    QuestionRecord NVARCHAR(MAX)
+);
 
 CREATE TABLE Post (
     ID INT IDENTITY(1,1) PRIMARY KEY,
     Username VARCHAR(30),
     Title NVARCHAR(250),
     Content NVARCHAR(MAX),
-    Image VARCHAR(NAX) DEFAULT NULL
+    Image VARCHAR(MAX) DEFAULT NULL
 );
 
 CREATE TABLE Comment (
@@ -49,6 +54,11 @@ REFERENCES Post (ID);
 
 ALTER TABLE Comment
 ADD CONSTRAINT CommentReplyReference
-FOREIGN KEY (Comments)
+FOREIGN KEY (ID)
 REFERENCES Comment (ID);
+
+ALTER TABLE UserListRegister
+ADD CONSTRAINT UsernameReference
+FOREIGN KEY (Username)
+REFERENCES UserAccount (Username);
 

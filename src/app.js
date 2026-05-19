@@ -4,6 +4,14 @@ const path = require("path");
 const loader = require("./config/loader.config");
 const bodyParser = require("body-parser");
 
+const session = require("express-session");
+
+exapp.use(session({
+    secret: "abc123",
+    resave: false,
+    saveUninitialized: false
+}));
+
 exapp.set("view engine", "ejs");
 exapp.set("views", path.join(__dirname, "views"));
 exapp.use(bodyParser.urlencoded({ extended: true }));

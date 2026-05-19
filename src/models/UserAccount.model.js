@@ -17,6 +17,8 @@ const UserAccount = {
         return !!user;
     },
     Create: async data => {
+        if (!UserAccount.CheckUser(data.username))
+            return;
         let response = await db.Insert({
             table: "useraccount",
             data: [
@@ -25,8 +27,8 @@ const UserAccount = {
                     fullname: data.fullname,
                     role: data.role,
                     password: crypto.createHash("md5").update(data.password).digest("hex"),
-                    drivefolder: null,
-                    isactive: true
+                    drivefolder: data.drivefolder || null,
+                    isactive: false
                 }
             ]
         });
@@ -45,3 +47,4 @@ const UserAccount = {
     }
 }
 
+module.exports = UserAccount;

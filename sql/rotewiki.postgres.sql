@@ -1,52 +1,59 @@
--- Tạo database (PostgreSQL không tự dùng USE, cần connect trực tiếp)
--- CREATE DATABASE Rotewiki;
+CREATE DATABASE rotewiki;
 
--- Bảng UserAccount
+-- Kết nối vào database trước rồi chạy tiếp
+
 CREATE TABLE UserAccount (
     Username VARCHAR(30) PRIMARY KEY,
     Fullname VARCHAR(255),
     Role VARCHAR(10),
-    Password BYTEA, -- VARBINARY(MAX) => BYTEA
+    Password BYTEA,
     DriveFolder VARCHAR(255),
     IsActive BOOLEAN
 );
 
--- Bảng Post
+CREATE TABLE UserListRegister (
+    ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    Username VARCHAR(30),
+    QuestionRecord TEXT
+);
+
 CREATE TABLE Post (
-    ID SERIAL PRIMARY KEY, -- INT IDENTITY(1,1) => SERIAL
+    ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     Username VARCHAR(30),
     Title VARCHAR(250),
-    Content TEXT,          -- NVARCHAR(MAX) => TEXT
-    Image VARCHAR(255) DEFAULT NULL
-);
-
--- Bảng Comment
-CREATE TABLE Comment (
-    ID SERIAL PRIMARY KEY,  -- INT IDENTITY(1,1) => SERIAL
-    Username VARCHAR(30),
-    PostID INT,
-    ReplyComment INT NULL,  -- Self-referencing
     Content TEXT,
-    CONSTRAINT Comment_Reply_FK FOREIGN KEY (ReplyComment)
-        REFERENCES Comment(ID)
-        ON DELETE SET NULL
+    Image TEXT DEFAULT NULL
 );
 
--- Khóa ngoại
+CREATE TABLE Comment (
+    ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    Username VARCHAR(30),
+    PostID INTEGER,
+    ReplyComment INTEGER,
+    Content TEXT
+);
+
 ALTER TABLE Post
 ADD CONSTRAINT PostUserReference
 FOREIGN KEY (Username)
-REFERENCES UserAccount (Username)
-ON DELETE CASCADE;
+REFERENCES UserAccount (Username);
 
 ALTER TABLE Comment
 ADD CONSTRAINT CommentUserReference
 FOREIGN KEY (Username)
-REFERENCES UserAccount (Username)
-ON DELETE CASCADE;
+REFERENCES UserAccount (Username);
 
 ALTER TABLE Comment
 ADD CONSTRAINT CommentPostReference
 FOREIGN KEY (PostID)
-REFERENCES Post(ID)
-ON DELETE CASCADE;
+REFERENCES Post (ID);
+
+ALTER TABLE Comment
+ADD CONSTRAINT CommentReplyReference
+FOREIGN KEY (ReplyComment)
+REFERENCES Comment (ID);
+
+ALTER TABLE UserListRegister
+ADD CONSTRAINT UsernameReference
+FOREIGN KEY (Username)
+REFERENCES UserAccount (Username);
