@@ -1,6 +1,9 @@
 const loader = {
     route: {
-        home: require("../routes/home.route")
+        home: require("../routes/home.route"),
+        service: {
+            useraccount: require("../routes/service/useraccount.service.route")
+        }
     },
     googleApi: ("./api/google.json"),
     drive: {

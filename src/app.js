@@ -19,6 +19,7 @@ exapp.use(
 
 exapp.use("/public", express.static(path.join(__dirname, "public")));
 exapp.use("/", loader.route.home);
+exapp.use("/service/useraccount/", loader.route.service.useraccount);
 
 exapp.listen(3000);
 
