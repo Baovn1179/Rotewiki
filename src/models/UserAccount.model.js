@@ -34,7 +34,6 @@ const UserAccount = {
             ]
         });
 
-        console.log(result);
 
         if (!result || result.length === 0) {
             return null;

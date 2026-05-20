@@ -14,8 +14,14 @@ router.post("/login", async (req, res) => {
 
     try {
         const user = await UserAccount.FindUserByLogin({username, password});
-
         if (user) {
+            if (user.isactive === false) {
+                console.log(`Tài khoản ${username} chưa được xét duyệt.`);
+                return res.json({
+                    data: "failure",
+                    message: "Tài khoản của đồng chí chưa được xét duyệt xong, đồng chí vui lòng chờ đợi hoặc liên hệ với các đồng chí trong Ban quản trị và biên tập để xem xét. Sau khi có kết quả, Ban quản trị Rotewiki sẽ gửi email thông báo cho đồng chí. Xin cảm ơn đồng chí đã quan tâm và ủng hộ Rotewiki!"
+                });
+            }
             req.session.user = {
                 username: user.username,
                 fullname: user.fullname,

@@ -24,7 +24,6 @@ submit.onclick = async event => {
     })
     .then(res => res.json())
     .then(data => {
-        console.log(data);
         if (data.data == "success") {
             alert("Đăng nhập thành công!");
             //window.location.href = "/"; // Chuyển hướng về trang chủ
