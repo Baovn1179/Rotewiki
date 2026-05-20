@@ -34,6 +34,14 @@ const db = {
         const {data, error} = await querycond;
 
         return data || error;
+    },
+    Update: async query => {
+        const {data, error} = await client
+            .from(query.table)
+            .update(query.data)
+            .match(query.match || {});
+
+        return data || error;
     }
 }
 

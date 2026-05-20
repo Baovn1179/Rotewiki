@@ -26,7 +26,7 @@ submit.onclick = async event => {
     .then(data => {
         if (data.data == "success") {
             alert("Đăng nhập thành công!");
-            //window.location.href = "/"; // Chuyển hướng về trang chủ
+            window.location.href = "/"; // Chuyển hướng về trang chủ
         } else {
             alert("Đăng nhập thất bại: " + data.message);
         }

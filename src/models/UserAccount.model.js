@@ -77,6 +77,89 @@ const UserAccount = {
         });
 
         return Array.isArray(result) ? result : (result ? [result] : []);
+    },
+    GetPendingRequests: async () => {
+        const users = await db.Select({
+            table: "useraccount",
+            select: "*",
+            conditions: [
+                {
+                    column: "isactive",
+                    value: false
+                }
+            ]
+        });
+
+        const registers = await db.Select({
+            table: "userlistregister",
+            select: "*"
+        });
+
+        const registerArray = Array.isArray(registers) ? registers : (registers ? [registers] : []);
+        const registerMap = {};
+        registerArray.forEach(record => {
+            if (record.username) {
+                registerMap[record.username] = record.questionrecord || "";
+            }
+        });
+
+        const pending = Array.isArray(users) ? users : (users ? [users] : []);
+        return pending.map(user => ({
+            ...user,
+            questionrecord: registerMap[user.username] || ""
+        }));
+    },
+    GetPendingRequestByUsername: async username => {
+        const users = await db.Select({
+            table: "useraccount",
+            select: "*",
+            conditions: [
+                {
+                    column: "username",
+                    value: username
+                },
+                {
+                    column: "isactive",
+                    value: false
+                }
+            ]
+        });
+
+        const user = Array.isArray(users) ? users[0] : users;
+
+        if (!user) {
+            return null;
+        }
+
+        const records = await db.Select({
+            table: "userlistregister",
+            select: "*",
+            conditions: [
+                {
+                    column: "username",
+                    value: username
+                }
+            ]
+        });
+
+        const recordArray = Array.isArray(records) ? records : (records ? [records] : []);
+        return {
+            ...user,
+            questionrecord: recordArray.length > 0 ? recordArray[0].questionrecord || "" : ""
+        };
+    },
+    ApproveUser: async username => {
+        const result = await db.Update({
+            table: "useraccount",
+            data: {
+                isactive: true
+            },
+            match: {
+                username: username
+            }
+        });
+
+        return result;
     }
 }
 
