@@ -20,8 +20,7 @@ const posts = [
 
 router.get("/", (req, res) => {
     res.render('user/', {
-        posts,
-        heading: 'Trang Chủ Blog'
+        posts: posts
     });
 });
 
@@ -35,9 +34,7 @@ router.get('/search', (req, res) => {
     });
 
     res.render('user/', {
-        posts: resultPosts,
-        heading: query ? `Kết quả tìm kiếm cho "${query}"` : 'Kết quả tìm kiếm',
-        query
+        posts: resultPosts
     });
 });
 

@@ -29,6 +29,15 @@ exapp.use(
     ))
 );
 
+// Truyền thông tin đăng nhập 
+exapp.use((req, res, next) => {
+    res.locals.user = {
+        username: req.session.user ? req.session.user.username : null,
+        name: req.session.user ? req.session.user.fullname : null,
+        role: req.session.user ? req.session.user.role : null
+    };
+    next();
+});
 
 exapp.use("/public", express.static(path.join(__dirname, "public")));
 exapp.use("/", loader.route.home);

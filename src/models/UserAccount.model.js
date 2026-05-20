@@ -18,7 +18,6 @@ const UserAccount = {
     },
     FindUserByLogin: async data => {
         let username = data.username;
-        console.log(username);
         let password = crypto.createHash("md5").update(data.password).digest("hex");
         var result = await db.Select({
             table: "useraccount",
@@ -34,6 +33,8 @@ const UserAccount = {
                 }
             ]
         });
+
+        console.log(result);
 
         if (!result || result.length === 0) {
             return null;

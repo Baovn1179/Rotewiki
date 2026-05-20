@@ -21,7 +21,7 @@ const db = {
         return data || error;
     },
     Select: async query => {
-        const querycond = client 
+        var querycond = client 
             .from(query.table)
             .select(query.select)
             
