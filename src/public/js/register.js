@@ -33,7 +33,7 @@ submitBtn.onclick = event => {
     })
     .then(async response => {
             let data = await response.json();
-            if (data == 1) alert("Hồ sơ của đồng chí đang trong quá trình chờ thẩm tra và xét duyệt, xin hãy chờ đợi, chúng tôi sẽ gửi email đến cho bạn sau.");
+            if (data.data == "success") alert("Hồ sơ của đồng chí đang trong quá trình chờ thẩm tra và xét duyệt, xin hãy chờ đợi, chúng tôi sẽ gửi email đến cho bạn sau.");
             else alert("Hồ sơ của đồng chí gửi không thành công.");
         });
 

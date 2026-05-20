@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rotewiki</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="public/css/style.css">
+
+</head>
+
+<body>
+
+    <div class="app-layout">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <!-- Logo -->
+            <div class="sidebar-logo">
+
+                <img src="public/images/logo.png" alt="logo">
+
+            </div>
+
+            <!-- Divider -->
+            <div class="sidebar-divider"></div>
+
+            <!-- Top menu -->
+            <div class="sidebar-top">
+
+                <!-- Search -->
+                <button class="sidebar-btn">
+
+                    <i class="bi bi-search"></i>
+
+                </button>
+
+                <!-- Expand Menu -->
+                <button class="sidebar-btn" data-bs-toggle="offcanvas" data-bs-target="#megaMenu">
+
+                    <i class="bi bi-list"></i>
+
+                </button>
+
+            </div>
+
+            <!-- Bottom -->
+            <div class="sidebar-bottom">
+
+                <button class="sidebar-btn">
+
+                    <i class="bi bi-gear"></i>
+
+                </button>
+
+                <div class="notification-wrapper">
+
+                    <a href="#" class="sidebar-btn btn btn-link text-white p-0">
+
+                        <i class="bi bi-bell"></i>
+
+                    </a>
+
+                    <div class="notification-popup">
+
+                        <h3>Thông báo</h3>
+
+                        <div class="user-popup-divider"></div>
+
+                        <div class="notification-list">
+                            <div class="notification-item">
+                                <div class="notification-item-title">Cập nhật mới</div>
+                                <div class="notification-item-body">Quản trị viên đã phê duyệt nội dung mới.</div>
+                                <div class="notification-item-meta">5 phút trước</div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-item-title">Báo cáo</div>
+                                <div class="notification-item-body">Có 3 báo cáo mới cần xử lý.</div>
+                                <div class="notification-item-meta">30 phút trước</div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-item-title">Hệ thống</div>
+                                <div class="notification-item-body">Server sẽ bảo trì lúc 23:00.</div>
+                                <div class="notification-item-meta">1 giờ trước</div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="user-wrapper">
+
+                    <button class="sidebar-btn">
+
+                        <i class="bi bi-person-circle"></i>
+
+                    </button>
+
+                    <div class="user-popup">
+
+                        <h3>Người dùng</h3>
+
+                        <div class="user-popup-divider"></div>
+
+                        <p>
+                            Đồng chí cần đăng nhập để cộng tác với chúng tôi
+                        </p>
+
+                        <button class="login-btn">
+                            <a href="/login" class="text-white">Đăng nhập</a>
+                        </button>
+
+                        <button class="register-btn">
+                            <a href="/register" class="text-dark">Đăng ký</a>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+        <!-- ADMIN MEGA MENU -->
+        <div class="offcanvas offcanvas-start mega-menu" tabindex="-1" id="megaMenu">
+
+            <div class="offcanvas-header">
+                <h5 class="offcanvas-title">Menu Quản trị</h5>
+                <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+            </div>
+
+            <div class="offcanvas-body p-0">
+
+                <div class="mega-top">
+
+                    <div class="mega-brand">
+                        <img src="/images/logo.png" alt="Rotewiki logo">
+                    </div>
+
+                    <div class="mega-info">
+                        <h5>Rotewiki Admin</h5>
+                        <div class="mega-stats">
+                            <div class="stat-item">
+                                <i class="bi bi-people"></i>
+                                <span>Người dùng</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="bi bi-file-earmark-text"></i>
+                                <span>Bài viết</span>
+                            </div>
+                            <div class="stat-item">
+                                <i class="bi bi-gear"></i>
+                                <span>Cấu hình</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="mega-divider"></div>
+
+                <div class="mega-grid">
+
+                    <div class="mega-column">
+                        <h4>Điều hướng</h4>
+                        <a href="/admin/dashboard">
+                            <i class="bi bi-house"></i>
+                            Tổng quan
+                        </a>
+                        <a href="/admin/users">
+                            <i class="bi bi-people"></i>
+                            Quản lý người dùng
+                        </a>
+                        <a href="/admin/posts">
+                            <i class="bi bi-journal-text"></i>
+                            Quản lý bài viết
+                        </a>
+                        <a href="/admin/files">
+                            <i class="bi bi-folder"></i>
+                            Quản lý tệp
+                        </a>
+                    </div>
+
+                    <div class="mega-column">
+                        <h4>Hệ thống</h4>
+                        <a href="/admin/settings">
+                            <i class="bi bi-gear"></i>
+                            Cài đặt chung
+                        </a>
+                        <a href="/admin/logs">
+                            <i class="bi bi-journal-check"></i>
+                            Nhật ký hoạt động
+                        </a>
+                        <a href="/admin/roles">
+                            <i class="bi bi-shield-lock"></i>
+                            Phân quyền
+                        </a>
+                        <a href="/admin/reports">
+                            <i class="bi bi-graph-up"></i>
+                            Báo cáo
+                        </a>
+                    </div>
+
+                    <div class="mega-column">
+                        <h4>Hỗ trợ</h4>
+                        <a href="/admin/help">
+                            <i class="bi bi-question-circle"></i>
+                            Trợ giúp
+                        </a>
+                        <a href="/admin/feedback">
+                            <i class="bi bi-chat-dots"></i>
+                            Phản hồi
+                        </a>
+                        <a href="/admin/contact">
+                            <i class="bi bi-envelope"></i>
+                            Liên hệ
+                        </a>
+                    </div>
+
+                    <div class="mega-column">
+                        <h4>Thông tin</h4>
+                        <a href="/admin/about">
+                            <i class="bi bi-info-circle"></i>
+                            Về Rotewiki
+                        </a>
+                        <a href="/admin/teams">
+                            <i class="bi bi-people-fill"></i>
+                            Ban quản trị
+                        </a>
+                        <a href="/admin/policies">
+                            <i class="bi bi-shield-check"></i>
+                            Chính sách
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">

@@ -11,10 +11,30 @@ CREATE TABLE UserAccount (
     IsActive BOOLEAN
 );
 
+INSERT INTO UserAccount (Username, Fullname, Role, Password, DriveFolder, IsActive)
+VALUES ('admin', 'admin', 'admin', decode(md5('admin'), 'hex'), NULL, TRUE);
+
 CREATE TABLE UserListRegister (
     ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     Username VARCHAR(30),
     QuestionRecord TEXT
+);
+
+CREATE TABLE Notification (
+    ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    Username VARCHAR(30),
+    Title VARCHAR(250),
+    Message TEXT,
+    IsRead BOOLEAN DEFAULT FALSE,
+    CreatedAt TIMESTAMPTZ DEFAULT NOW()
+);
+
+CREATE TABLE UploadedDocument (
+    ID INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    Username VARCHAR(30),
+    Title VARCHAR(250),
+    FileName VARCHAR(255),
+    CreatedAt TIMESTAMPTZ DEFAULT NOW()
 );
 
 CREATE TABLE Post (
@@ -22,7 +42,8 @@ CREATE TABLE Post (
     Username VARCHAR(30),
     Title VARCHAR(250),
     Content TEXT,
-    Image TEXT DEFAULT NULL
+    Image TEXT DEFAULT NULL,
+    CreatedAt TIMESTAMPTZ DEFAULT NOW()
 );
 
 CREATE TABLE Comment (
@@ -55,5 +76,15 @@ REFERENCES Comment (ID);
 
 ALTER TABLE UserListRegister
 ADD CONSTRAINT UsernameReference
+FOREIGN KEY (Username)
+REFERENCES UserAccount (Username);
+
+ALTER TABLE Notification
+ADD CONSTRAINT NotificationUserReference
+FOREIGN KEY (Username)
+REFERENCES UserAccount (Username);
+
+ALTER TABLE UploadedDocument
+ADD CONSTRAINT UploadedDocumentUserReference
 FOREIGN KEY (Username)
 REFERENCES UserAccount (Username);

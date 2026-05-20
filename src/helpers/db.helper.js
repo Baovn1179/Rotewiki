@@ -21,10 +21,17 @@ const db = {
         return data || error;
     },
     Select: async query => {
-        const {data, error} = await client 
+        const querycond = client 
             .from(query.table)
             .select(query.select)
-            .eq(query.condition.column, query.condition.value)
+            
+        if (query.conditions) {
+            query.conditions.forEach(condition => {
+                querycond = querycond.eq(condition.column, condition.value);
+            });
+        }
+
+        const {data, error} = await querycond;
 
         return data || error;
     }

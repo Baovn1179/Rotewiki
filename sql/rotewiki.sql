@@ -15,10 +15,30 @@ CREATE TABLE UserAccount (
     IsActive BIT
 );
 
+INSERT INTO UserAccount (Username, Fullname, Role, Password, DriveFolder, IsActive)
+VALUES ('admin', 'admin', 'admin', CONVERT(VARBINARY(MAX), 'admin'), NULL, 1);
+
 CREATE TABLE UserListRegister (
     ID IDENTITY(1,1) PRIMARY KEY,
     Username VARCHAR(30),
     QuestionRecord NVARCHAR(MAX)
+);
+
+CREATE TABLE Notification (
+    ID INT IDENTITY(1,1) PRIMARY KEY,
+    Username VARCHAR(30),
+    Title NVARCHAR(250),
+    Message NVARCHAR(500),
+    IsRead BIT DEFAULT 0,
+    CreatedAt DATETIME DEFAULT GETDATE()
+);
+
+CREATE TABLE UploadedDocument (
+    ID INT IDENTITY(1,1) PRIMARY KEY,
+    Username VARCHAR(30),
+    Title NVARCHAR(250),
+    FileName NVARCHAR(255),
+    CreatedAt DATETIME DEFAULT GETDATE()
 );
 
 CREATE TABLE Post (
@@ -26,7 +46,8 @@ CREATE TABLE Post (
     Username VARCHAR(30),
     Title NVARCHAR(250),
     Content NVARCHAR(MAX),
-    Image VARCHAR(MAX) DEFAULT NULL
+    Image VARCHAR(MAX) DEFAULT NULL,
+    CreatedAt DATETIME DEFAULT GETDATE()
 );
 
 CREATE TABLE Comment (
@@ -59,6 +80,16 @@ REFERENCES Comment (ID);
 
 ALTER TABLE UserListRegister
 ADD CONSTRAINT UsernameReference
+FOREIGN KEY (Username)
+REFERENCES UserAccount (Username);
+
+ALTER TABLE Notification
+ADD CONSTRAINT NotificationUserReference
+FOREIGN KEY (Username)
+REFERENCES UserAccount (Username);
+
+ALTER TABLE UploadedDocument
+ADD CONSTRAINT UploadedDocumentUserReference
 FOREIGN KEY (Username)
 REFERENCES UserAccount (Username);
 

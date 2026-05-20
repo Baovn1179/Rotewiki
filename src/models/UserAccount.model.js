@@ -16,9 +16,29 @@ const UserAccount = {
 
         return !!user;
     },
+    FindUserByLogin: async data => {
+        let username = data.username;
+        console.log(username);
+        let password = crypto.createHash("md5").update(data.password).digest("hex");
+        var user = await db.Select({
+            table: "useraccount",
+            select: "*", 
+            condition: [
+                {
+                    comlumn: "username",
+                    value: username
+                },
+                {
+                    column: "password",
+                    value: password
+                }
+            ]
+        });
+        return user || null;
+    },
     Create: async data => {
         if (!UserAccount.CheckUser(data.username))
-            return;
+            return; 
         let response = await db.Insert({
             table: "useraccount",
             data: [
