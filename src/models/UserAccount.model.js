@@ -70,10 +70,10 @@ const UserAccount = {
 
         return response;
     },
-    GetAll: async () => {
+    GetAll: async (column = "*")=> {
         var result = await db.Select({
             table: "useraccount",
-            select: "*"
+            select: column
         });
 
         return Array.isArray(result) ? result : (result ? [result] : []);

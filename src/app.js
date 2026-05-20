@@ -7,7 +7,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 
 exapp.use(session({
-    secret: "abc123",
+    secret: "03021931",
     resave: false,
     saveUninitialized: false
 }));
@@ -39,10 +39,11 @@ exapp.use((req, res, next) => {
     next();
 });
 
-exapp.use("/public", express.static(path.join(__dirname, "public")));
+exapp.use("/public/", express.static(path.join(__dirname, "public")));
 exapp.use("/", loader.route.home);
 exapp.use("/service/", loader.route.useraccount);
-exapp.use("/admin", loader.route.admin);
+exapp.use("/admin/", loader.route.admin);
+exapp.use("/api/v1/", loader.route.api);
 
 exapp.listen(3000);
 
