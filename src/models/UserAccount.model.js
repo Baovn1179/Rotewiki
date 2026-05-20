@@ -20,12 +20,12 @@ const UserAccount = {
         let username = data.username;
         console.log(username);
         let password = crypto.createHash("md5").update(data.password).digest("hex");
-        var user = await db.Select({
+        var result = await db.Select({
             table: "useraccount",
             select: "*", 
-            condition: [
+            conditions: [
                 {
-                    comlumn: "username",
+                    column: "username",
                     value: username
                 },
                 {
@@ -34,7 +34,12 @@ const UserAccount = {
                 }
             ]
         });
-        return user || null;
+
+        if (!result || result.length === 0) {
+            return null;
+        }
+
+        return Array.isArray(result) ? result[0] : result;
     },
     Create: async data => {
         if (!UserAccount.CheckUser(data.username))
