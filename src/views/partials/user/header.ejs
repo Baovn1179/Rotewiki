@@ -41,11 +41,24 @@
             <div class="sidebar-top">
 
                 <!-- Search -->
-                <button class="sidebar-btn">
+                <div class="search-wrapper">
 
-                    <i class="bi bi-search"></i>
+                    <button class="sidebar-btn" type="button">
 
-                </button>
+                        <i class="bi bi-search"></i>
+
+                    </button>
+
+                    <div class="search-popup">
+                        <form class="search-form" method="get" action="/search">
+                            <h3>Tìm kiếm</h3>
+                            <div class="user-popup-divider"></div>
+                            <input type="text" name="q" placeholder="Tìm bài viết, tài liệu..." required autocomplete="off">
+                            <button type="submit" class="btn btn-primary w-100 mt-3">Tìm</button>
+                        </form>
+                    </div>
+
+                </div>
 
                 <!-- Expand Menu -->
                 <button class="sidebar-btn" data-bs-toggle="offcanvas" data-bs-target="#megaMenu">
@@ -136,4 +149,5 @@
         </aside>
 
         <!-- MAIN CONTENT -->
+        <div class="right-layout">
         <main class="main-content">

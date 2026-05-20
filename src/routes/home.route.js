@@ -1,26 +1,43 @@
 const router = require("express").Router();
 
+const posts = [
+    {
+        title: 'Learning NodeJS',
+        desc: 'Build backend applications using Express.',
+        image: 'https://picsum.photos/600/400?1'
+    },
+    {
+        title: 'Bootstrap Tutorial',
+        desc: 'Create responsive UI quickly.',
+        image: 'https://picsum.photos/600/400?2'
+    },
+    {
+        title: 'MongoDB Guide',
+        desc: 'Learn database for NodeJS apps.',
+        image: 'https://picsum.photos/600/400?3'
+    }
+];
+
 router.get("/", (req, res) => {
-    const posts = [
-        {
-            title: 'Learning NodeJS',
-            desc: 'Build backend applications using Express.',
-            image: 'https://picsum.photos/600/400?1'
-        },
-        {
-            title: 'Bootstrap Tutorial',
-            desc: 'Create responsive UI quickly.',
-            image: 'https://picsum.photos/600/400?2'
-        },
-        {
-            title: 'MongoDB Guide',
-            desc: 'Learn database for NodeJS apps.',
-            image: 'https://picsum.photos/600/400?3'
-        }
-    ];
+    res.render('user/', {
+        posts,
+        heading: 'Trang Chủ Blog'
+    });
+});
+
+router.get('/search', (req, res) => {
+    const query = (req.query.q || '').trim();
+    const normalized = query.toLowerCase();
+
+    const resultPosts = posts.filter(post => {
+        return post.title.toLowerCase().includes(normalized)
+            || post.desc.toLowerCase().includes(normalized);
+    });
 
     res.render('user/', {
-        posts
+        posts: resultPosts,
+        heading: query ? `Kết quả tìm kiếm cho "${query}"` : 'Kết quả tìm kiếm',
+        query
     });
 });
 
