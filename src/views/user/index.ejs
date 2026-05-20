@@ -1,4 +1,9 @@
+<% if (user.role == "admin") { %>
+<%- include('../partials/admin/header') %>
+<% } else { %>
 <%- include('../partials/user/header') %>
+<% } %>
+
 
 <div class="container-fluid py-4">
 

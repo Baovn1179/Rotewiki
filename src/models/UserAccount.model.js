@@ -69,6 +69,14 @@ const UserAccount = {
         });
 
         return response;
+    },
+    GetAll: async () => {
+        var result = await db.Select({
+            table: "useraccount",
+            select: "*"
+        });
+
+        return Array.isArray(result) ? result : (result ? [result] : []);
     }
 }
 
